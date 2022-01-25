@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.security.PrivateKey;
 
-public class feedback extends AppCompatActivity {
+public class Feedback extends AppCompatActivity {
     private RatingBar rate;
     private EditText feed;
     private MaterialButton btn;

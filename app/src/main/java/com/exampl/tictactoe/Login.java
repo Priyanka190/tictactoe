@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -21,12 +20,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -47,7 +44,7 @@ import java.util.concurrent.TimeUnit;
 
 import static android.content.ContentValues.TAG;
 
-public class login extends AppCompatActivity implements View.OnClickListener {
+public class Login extends AppCompatActivity implements View.OnClickListener {
     private TextView loginbtn;
     private FirebaseAuth mAuth;
     private LinearLayout signInlayout;
@@ -184,11 +181,11 @@ public class login extends AppCompatActivity implements View.OnClickListener {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(login.this, "We have sent you instructions to reset your password!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Login.this, "We have sent you instructions to reset your password!", Toast.LENGTH_SHORT).show();
                                     forgetlayout.setVisibility(View.GONE);
                                     signInlayout.setVisibility(View.VISIBLE);
                                 } else {
-                                    Toast.makeText(login.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Login.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
                                 }
 
                             }
@@ -289,10 +286,10 @@ public class login extends AppCompatActivity implements View.OnClickListener {
                 number.setVisibility(View.GONE);
                 otp.setVisibility(View.VISIBLE);
             } else {
-                Toast.makeText(login.this, "Please Enter Correct Number", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "Please Enter Correct Number", Toast.LENGTH_LONG).show();
             }
         } else {
-            Toast.makeText(login.this, "Please Enter Valid Phone number", Toast.LENGTH_LONG).show();
+            Toast.makeText(Login.this, "Please Enter Valid Phone number", Toast.LENGTH_LONG).show();
         }
     }
     private void sendVerificationCode(String mobile) {
@@ -325,7 +322,7 @@ public class login extends AppCompatActivity implements View.OnClickListener {
 
         @Override
         public void onVerificationFailed(FirebaseException e) {
-            Toast.makeText(login.this, e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(Login.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
 
         @Override
@@ -347,12 +344,12 @@ public class login extends AppCompatActivity implements View.OnClickListener {
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(login.this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             //verification successful we will start the profile activity
-                            Intent intent = new Intent(login.this, MainActivity.class);
+                            Intent intent = new Intent(Login.this, MainActivity.class);
                             startActivity(intent);
 
                         } else {
@@ -365,7 +362,7 @@ public class login extends AppCompatActivity implements View.OnClickListener {
                                 message = "Invalid code entered...";
                             }
 
-                            Toast.makeText(login.this,message,Toast.LENGTH_LONG).show();
+                            Toast.makeText(Login.this,message,Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -403,7 +400,7 @@ public class login extends AppCompatActivity implements View.OnClickListener {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
-                            Intent i=new Intent(login.this,MainActivity.class);
+                            Intent i=new Intent(Login.this,MainActivity.class);
 //                            i.putExtra("username",mAuth.getCurrentUser().getDisplayName());
                             startActivity(i);
                         } else {
@@ -427,11 +424,11 @@ public class login extends AppCompatActivity implements View.OnClickListener {
                     Log.d(TAG, "signInWithEmail:success");
                     FirebaseUser user = mAuth.getCurrentUser();
                     updateUI(user);
-                    Intent i=new Intent(login.this,MainActivity.class);
+                    Intent i=new Intent(Login.this,MainActivity.class);
                     startActivity(i);
                 } else {
                     Log.w(TAG, "signInWithEmail:failure", task.getException());
-                    Toast.makeText(login.this, "Authentication failed.",
+                    Toast.makeText(Login.this, "Authentication failed.",
                             Toast.LENGTH_SHORT).show();
                     updateUI(null);
                 }
@@ -475,7 +472,7 @@ public class login extends AppCompatActivity implements View.OnClickListener {
             {
                 if (task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
-                    Intent intent= new Intent(login.this, MainActivity.class);
+                    Intent intent= new Intent(Login.this, MainActivity.class);
                     startActivity(intent);
                     FirebaseUser user = mAuth.getCurrentUser();
                     updateUI(user);

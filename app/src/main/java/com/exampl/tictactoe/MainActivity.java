@@ -1,26 +1,16 @@
 package com.exampl.tictactoe;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.ContextMenu;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -55,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
         logout.setOnClickListener(view -> {
             Log.d("TEMP" , "Clicked");
             FirebaseAuth.getInstance().signOut();
-            Intent intent = new Intent(MainActivity.this, login.class);
+            Intent intent = new Intent(MainActivity.this, Login.class);
             startActivity(intent);
         });
         feed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, feedback.class);
+                Intent intent = new Intent(MainActivity.this, Feedback.class);
                 if(mAuth.getCurrentUser().getDisplayName()!=null) {
                     intent.putExtra("info", mAuth.getCurrentUser().getDisplayName());
                     startActivity(intent);
