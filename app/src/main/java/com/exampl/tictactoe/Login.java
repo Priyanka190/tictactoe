@@ -45,10 +45,10 @@ import java.util.concurrent.TimeUnit;
 import static android.content.ContentValues.TAG;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
-    private TextView loginbtn;
+    private TextView loginButton;
     private FirebaseAuth mAuth;
     private LinearLayout signInlayout;
-    private TextInputEditText inuseremail;
+    private TextInputEditText inUserEmail;
     private TextInputEditText inuserPassword;
     private TextView inforgetbtn;
     private ImageButton ingooglebtn;
@@ -106,13 +106,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         signInlayout=findViewById(R.id.signInlayout);
-        inuseremail=findViewById(R.id.inuseremail);
+        inUserEmail =findViewById(R.id.inuseremail);
         inuserPassword=findViewById(R.id.inuserpassword);
         inforgetbtn=findViewById(R.id.forgatebutton);
         ingooglebtn=findViewById(R.id.googleloginbutton);
         inphone=findViewById(R.id.phone);
         intweeter=findViewById(R.id.tweet);
-        loginbtn=findViewById(R.id.login);
+        loginButton =findViewById(R.id.login);
         signuplayout=findViewById(R.id.signuplayout);
         uvsername=findViewById(R.id.uvsername);
         useremail=findViewById(R.id.useremail);
@@ -147,7 +147,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             }
         });
         signupbtn.setOnClickListener(this);
-        loginbtn.setOnClickListener(this::onClick);
+        loginButton.setOnClickListener(this::onClick);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -412,7 +412,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void loginuser() {
-        String email=inuseremail.getText().toString().trim();
+        String email= inUserEmail.getText().toString().trim();
         Log.i("line 86",email);
         String password=inuserPassword.getText().toString().trim();
         Log.i("line 88",password);

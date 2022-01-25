@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -13,18 +12,15 @@ import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.security.PrivateKey;
 
 public class Feedback extends AppCompatActivity {
     private RatingBar rate;
     private EditText feed;
     private MaterialButton btn;
     private TextView text;
-    private String ratepoint="";
+    private String ratePoint ="";
     DatabaseReference databaseReference;
     FirebaseAuth mAuth;
     private String info1;
@@ -50,27 +46,27 @@ public class Feedback extends AppCompatActivity {
                 if(rating==0)
                 {
                     text.setText("Very Dissatisfied");
-                    ratepoint=Float.toString(rating);
+                    ratePoint =Float.toString(rating);
                 }
                 else if(rating==1)
                 {
                     text.setText("OK");
-                    ratepoint=Float.toString(rating);
+                    ratePoint =Float.toString(rating);
                 }
                 else if(rating==2 || rating==3)
                 {
                     text.setText("Very Good");
-                    ratepoint=Float.toString(rating);
+                    ratePoint =Float.toString(rating);
                 }
                 else if(rating==4)
                 {
                     text.setText("Satisfied");
-                    ratepoint=Float.toString(rating);
+                    ratePoint =Float.toString(rating);
                 }
                 else if(rating==5)
                 {
                     text.setText("Very Satisfied");
-                    ratepoint=Float.toString(rating);
+                    ratePoint =Float.toString(rating);
                 }
                 else
                 {
